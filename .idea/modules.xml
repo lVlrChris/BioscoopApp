@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BioscoopApp.iml" filepath="$PROJECT_DIR$/BioscoopApp.iml" />
+      <module fileurl="file://C:\Users\Kevin van Loon\Documents\GitHub\BioscoopApp\BioscoopApp.iml" filepath="C:\Users\Kevin van Loon\Documents\GitHub\BioscoopApp\BioscoopApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Kevin van Loon\Documents\GitHub\BioscoopApp\app\app.iml" filepath="C:\Users\Kevin van Loon\Documents\GitHub\BioscoopApp\app\app.iml" />
     </modules>
   </component>
 </project>
