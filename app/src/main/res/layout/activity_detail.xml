@@ -4,43 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context="com.groep2.bioscoopapp.guilayer.DetailActivity">
+    android:theme="@android:style/Theme.NoTitleBar"
+    android:background="@color/testDetail"
+    tools:context="com.groep2.bioscoopapp.guilayer.DetailActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <ImageView
         android:id="@+id/ad_movieImage"
-        android:layout_width="225dp"
-        android:layout_height="259dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="183dp"
+        android:layout_height="273dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:color/darker_gray" />
 
     <TextView
         android:id="@+id/test"
-        android:layout_width="wrap_content"
+        android:layout_width="182dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="serif"
         android:text="TextView"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ad_movieImage"
+        app:layout_constraintTop_toTopOf="@+id/ad_movieImage" />
 
     <TextView
         android:id="@+id/ad_description"
-        android:layout_width="298dp"
-        android:layout_height="114dp"
+        android:layout_width="199dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ad_movieImage" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ad_movieImage"
+        app:layout_constraintTop_toBottomOf="@+id/test" />
+
 </android.support.constraint.ConstraintLayout>

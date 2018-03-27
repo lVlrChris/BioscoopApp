@@ -20,12 +20,12 @@
     <ImageView
         android:id="@+id/am_header"
         android:layout_width="0dp"
-        android:layout_height="103dp"
+        android:layout_height="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/holo_red_light" />
+        app:layout_constraintTop_toBottomOf="@+id/am_topHeader"
+        app:srcCompat="@color/headerThemeDark" />
 
     <TextView
         android:id="@+id/am_headerTitle"
@@ -40,21 +40,48 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/am_header"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.129" />
+        app:layout_constraintTop_toTopOf="@+id/am_header"
+        app:layout_constraintVertical_bias="0.174" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="43dp"
         android:layout_height="38dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@android:drawable/ic_menu_info_details"
+        app:layout_constraintBottom_toBottomOf="@+id/am_header"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/am_header"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/am_topHeader"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:src="@color/headerThemeBlack"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="28dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/icon"
+        app:layout_constraintBottom_toBottomOf="@+id/am_topHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.901"
+        app:layout_constraintStart_toStartOf="@+id/am_topHeader"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.941" />
 </android.support.constraint.ConstraintLayout>
