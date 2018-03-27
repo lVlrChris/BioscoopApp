@@ -5,4 +5,19 @@ package com.groep2.bioscoopapp.domainlayer;
  */
 
 public class User {
+
+    private int userId;
+
+    public User(int id){
+        this.userId = id;
+
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }
