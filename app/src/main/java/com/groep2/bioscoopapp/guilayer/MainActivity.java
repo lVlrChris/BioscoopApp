@@ -1,7 +1,10 @@
 package com.groep2.bioscoopapp.guilayer;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.groep2.bioscoopapp.R;
@@ -25,25 +28,44 @@ public class MainActivity extends AppCompatActivity implements MovieListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         movies = new ArrayList<>();
-
+        //haalt movies op
         recieveMovies();
+        //vult de movies
         movies = factory.getMovies();
-
         moviesListView = findViewById(R.id.am_listview);
 
         adapter = new MovieAdapter(this, movies);
         moviesListView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
+        //Als er op een item uit de list wordt geklikt
+        moviesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Movie movie = movies.get(position);
+
+                //Maakt nieuwe intent aan
+                Intent intent = new Intent(getApplicationContext(),DetailActivity.class);
+
+                //Geeft movie object mee aan de intent
+                intent.putExtra("Movie", movie);
+
+                //Start de nieuwe activity
+                startActivity(intent);
+            }
+        });
+
     }
 
-
+    //callback
     @Override
     public void onMovieExecute(Movie movie) {
         factory.addMovie(movie);
         adapter.notifyDataSetChanged();
     }
 
+    //Voert asyncuit
     public void recieveMovies(){
         MovieAsyncTask task = new MovieAsyncTask(this);
         String[] urls = new String[] {"https://api.themoviedb.org/3/discover/movie?primary_release_date.gte=2017-11-15&primary_release_date.lte=2018-03-22&api_key=374be9bb54260058257acf1f992673db"};

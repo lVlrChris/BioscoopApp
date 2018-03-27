@@ -69,7 +69,11 @@ public class MovieAsyncTask extends AsyncTask<String, Void, String> {
                 String title = jsonArray.getJSONObject(i).getString("title");
                 movie.setTitle(title);
                 String url = jsonArray.getJSONObject(i).getString("backdrop_path");
-                movie.setImageUrl(url);
+                movie.setSmallImageUrl(url);
+                String bigUrl = jsonArray.getJSONObject(i).getString("poster_path");
+                movie.setBigImageUrl(bigUrl);
+                String desc = jsonArray.getJSONObject(i).getString("overview");
+                movie.setDescription(desc);
                 listener.onMovieExecute(movie);
             }
 

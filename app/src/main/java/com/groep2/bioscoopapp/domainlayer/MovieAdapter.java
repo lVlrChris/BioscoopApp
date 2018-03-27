@@ -43,8 +43,10 @@ public class MovieAdapter extends ArrayAdapter<Movie>{
         name.setText(movie.getTitle());
 
         ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
-        String startOfImageUrl = "https://image.tmdb.org/t/p/w500" + movie.getImageUrl();
+        String startOfImageUrl = "https://image.tmdb.org/t/p/w500" + movie.getSmallImageUrl();
         Picasso.with(getContext()).load(startOfImageUrl).into(imageView);
+
+
 
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
