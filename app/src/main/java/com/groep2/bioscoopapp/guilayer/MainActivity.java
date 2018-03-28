@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.groep2.bioscoopapp.R;
+import com.groep2.bioscoopapp.applicationlogic.MovieManager;
 import com.groep2.bioscoopapp.domainlayer.Movie;
 import com.groep2.bioscoopapp.domainlayer.MovieAdapter;
 import com.groep2.bioscoopapp.domainlayer.MovieAsyncTask;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements MovieListener {
 
-    MovieFactory factory = new MovieFactory();
+    MovieManager manager = new MovieManager();
     MovieAdapter adapter;
     ListView moviesListView;
     ArrayList<Movie> movies;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements MovieListener {
         //haalt movies op
         recieveMovies();
         //vult de movies
-        movies = factory.getMovies();
+        movies = manager.getMovies();
         moviesListView = findViewById(R.id.am_listview);
 
         adapter = new MovieAdapter(this, movies);
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements MovieListener {
     //callback
     @Override
     public void onMovieExecute(Movie movie) {
-        factory.addMovie(movie);
+        manager.addMovie(movie);
         adapter.notifyDataSetChanged();
     }
 

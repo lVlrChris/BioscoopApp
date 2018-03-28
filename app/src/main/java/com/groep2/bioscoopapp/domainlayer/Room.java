@@ -1,10 +1,12 @@
 package com.groep2.bioscoopapp.domainlayer;
 
+import java.io.Serializable;
+
 /**
  * Created by Kevin van Loon on 27-3-2018.
  */
 
-public class Room {
+public class Room implements Serializable {
     private int RoomID;
 
     public Room(int roomID) {

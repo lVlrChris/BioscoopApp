@@ -7,7 +7,7 @@
     tools:context="com.groep2.bioscoopapp.guilayer.OrderActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/ao_movieImage"
         android:layout_width="160dp"
         android:layout_height="194dp"
         android:layout_marginEnd="8dp"
@@ -24,10 +24,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ao_movieImage"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ao_time"
+        android:layout_width="117dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ao_movieImage"
+        app:layout_constraintTop_toBottomOf="@+id/ao_movieTitle" />
 </android.support.constraint.ConstraintLayout>

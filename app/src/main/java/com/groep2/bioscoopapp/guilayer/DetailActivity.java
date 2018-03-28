@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class DetailActivity extends AppCompatActivity {
 
     private Presentation chosenPresentation;
-    ListView presentations;
+    ListView presentations = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
