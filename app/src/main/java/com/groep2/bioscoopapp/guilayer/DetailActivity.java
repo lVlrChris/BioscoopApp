@@ -3,6 +3,7 @@ package com.groep2.bioscoopapp.guilayer;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,13 +23,14 @@ import java.util.ArrayList;
 public class DetailActivity extends AppCompatActivity {
 
     Presentation chosenPresentation;
+    ListView presentations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        ListView presentations = findViewById(R.id.ad_presentationList);
+        presentations = findViewById(R.id.ad_presentationList);
 
 
 
@@ -51,10 +53,11 @@ public class DetailActivity extends AppCompatActivity {
 
         //Zet de beschrjiving van de film
         TextView desc = findViewById(R.id.ad_description);
+        desc.setMovementMethod(new ScrollingMovementMethod());
         desc.setText(movie.getDescription());
 
         //Maakt fake data presentation aans
-        final Presentation presentation1 = new Presentation(movie, new Room(1), "17:00");
+        Presentation presentation1 = new Presentation(movie, new Room(1), "17:00");
         Presentation presentation2 = new Presentation(movie, new Room(1), "21:00");
 
         //Vult de presentations
@@ -76,9 +79,15 @@ public class DetailActivity extends AppCompatActivity {
                 Presentation presentation = presentationList.get(i);
                 //Stopt deze in de huidige presentation
                 chosenPresentation = presentation;
-                //Melding dat de prsentation gekozen is (tijdelijk)
+
+
+                for (int z = 0; z < presentations.getCount(); z++ ){
+                    presentations.getChildAt(z).setBackgroundColor(getResources().getColor(R.color.white));
+                }
+                presentations.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.red));
                 Toast.makeText(getApplicationContext(), presentation.toString(), Toast.LENGTH_SHORT).show();
-                
+
+
             }
         });
 
