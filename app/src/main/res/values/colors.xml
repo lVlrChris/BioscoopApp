@@ -9,11 +9,7 @@
     <color name="white">#ffffff</color>
     <color name="red">#dc143c</color>
 
-    //mainActivity kleuren
+    //thema kleuren
     <color name="headerThemeBlack">#192229</color>
     <color name="headerThemeDark">#161f26</color>
-
-    //Testkleuren
-    <color name="testDetail">#212121</color>
-    <color name="testBackgrund">#212121</color>
 </resources>
