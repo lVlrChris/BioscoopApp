@@ -2,6 +2,7 @@ package com.groep2.bioscoopapp.guilayer;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.groep2.bioscoopapp.R;
 

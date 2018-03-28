@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements MovieListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button infobutton = findViewById(R.id.ad_infoCinemaButton);
+        Button infobutton = findViewById(R.id.am_infoCinemaButton);
         movies = new ArrayList<>();
         //haalt movies op
         recieveMovies();
