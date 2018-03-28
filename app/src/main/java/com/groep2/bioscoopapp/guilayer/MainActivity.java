@@ -44,15 +44,11 @@ public class MainActivity extends AppCompatActivity implements MovieListener {
         moviesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 Movie movie = movies.get(position);
-
                 //Maakt nieuwe intent aan
                 Intent intent = new Intent(getApplicationContext(),DetailActivity.class);
-
                 //Geeft movie object mee aan de intent
                 intent.putExtra("Movie", movie);
-
                 //Start de nieuwe activity
                 startActivity(intent);
             }

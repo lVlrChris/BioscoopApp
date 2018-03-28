@@ -85,9 +85,6 @@ public class DetailActivity extends AppCompatActivity {
                     presentations.getChildAt(z).setBackgroundColor(getResources().getColor(R.color.white));
                 }
                 presentations.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.red));
-                Toast.makeText(getApplicationContext(), presentation.toString(), Toast.LENGTH_SHORT).show();
-
-
             }
         });
 
