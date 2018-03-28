@@ -5,4 +5,22 @@ package com.groep2.bioscoopapp.domainlayer;
  */
 
 public class Room {
+    private int RoomID;
+
+    public Room(int roomID) {
+        RoomID = roomID;
+    }
+
+    public int getRoomID() {
+        return RoomID;
+    }
+
+    public void setRoomID(int roomID) {
+        RoomID = roomID;
+    }
+
+    @Override
+    public String toString() {
+        return Integer.toString(this.getRoomID());
+    }
 }
