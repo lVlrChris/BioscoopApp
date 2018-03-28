@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.groep2.bioscoopapp.R;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements MovieListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Button infobutton = findViewById(R.id.ad_infoCinemaButton);
         movies = new ArrayList<>();
         //haalt movies op
         recieveMovies();
@@ -55,6 +57,15 @@ public class MainActivity extends AppCompatActivity implements MovieListener {
                 startActivity(intent);
             }
         });
+
+        infobutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CinemaActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 

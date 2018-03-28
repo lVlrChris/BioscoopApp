@@ -37,7 +37,5 @@ public class DetailActivity extends AppCompatActivity {
         //Zet de beschrjiving van de film
         TextView desc = findViewById(R.id.ad_description);
         desc.setText(movie.getDescription());
-
-
     }
 }
