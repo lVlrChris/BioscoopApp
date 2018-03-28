@@ -1,14 +1,16 @@
 package com.groep2.bioscoopapp.domainlayer;
 
+import java.io.Serializable;
+
 /**
  * Created by Kevin van Loon on 27-3-2018.
  */
 
-public class Presentation {
+public class Presentation implements Serializable {
 
-    Movie movie;
-    Room room;
-    String date;
+    private Movie movie;
+    private Room room;
+    private String date;
 
     public Presentation(Movie movie, Room room, String date) {
         this.movie = movie;

@@ -7,6 +7,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
 
-    Presentation chosenPresentation;
+    private Presentation chosenPresentation;
     ListView presentations;
 
     @Override
@@ -31,6 +32,8 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         presentations = findViewById(R.id.ad_presentationList);
+        Button orderButton = findViewById(R.id.ad_reserveren);
+
 
 
 
@@ -85,6 +88,19 @@ public class DetailActivity extends AppCompatActivity {
                     presentations.getChildAt(z).setBackgroundColor(getResources().getColor(R.color.white));
                 }
                 presentations.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.red));
+            }
+        });
+
+        orderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Maakt nieuwe intent aan
+                Intent intent = new Intent(getApplicationContext(),OrderActivity.class);
+                //Geeft movie object mee aan de intent
+                intent.putExtra("Presentation", chosenPresentation);
+                //Start de nieuwe activity
+                startActivity(intent);
             }
         });
 
