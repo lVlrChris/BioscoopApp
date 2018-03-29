@@ -87,6 +87,7 @@ public class DetailActivity extends AppCompatActivity {
                 for (int z = 0; z < presentations.getCount(); z++ ){
                     presentations.getChildAt(z).setBackgroundColor(getResources().getColor(R.color.white));
                 }
+
                 presentations.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.red));
             }
         });
@@ -94,7 +95,6 @@ public class DetailActivity extends AppCompatActivity {
         orderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 //Maakt nieuwe intent aan
                 Intent intent = new Intent(getApplicationContext(),OrderActivity.class);
                 //Geeft movie object mee aan de intent
