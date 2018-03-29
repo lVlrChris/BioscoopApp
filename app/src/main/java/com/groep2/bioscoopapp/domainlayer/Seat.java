@@ -9,9 +9,11 @@ import java.io.Serializable;
 public class Seat implements Serializable{
 
     private int seatID;
+    private boolean isTaken;
 
     public Seat(int seatID) {
         this.seatID = seatID;
+        this.isTaken = false;
     }
 
     public int getSeatID() {
@@ -21,4 +23,14 @@ public class Seat implements Serializable{
     public void setSeatID(int seatID) {
         this.seatID = seatID;
     }
+
+    public boolean isTaken() {
+        return isTaken;
+    }
+
+    public void setTaken(boolean taken) {
+        isTaken = taken;
+    }
+
+
 }

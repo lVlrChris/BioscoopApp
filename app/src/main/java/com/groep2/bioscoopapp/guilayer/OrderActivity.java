@@ -21,21 +21,25 @@ public class OrderActivity extends AppCompatActivity {
     private final int STUDENT_PRICE = 8;
 
     private final int ADULT_RPICE = 10;
+    TextView result;
 
     private final int CHILD_RPICE = 5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
-
+        result = (TextView) findViewById(R.id.ao_calculateResult);
         //Lege intent.
         Intent intent;
         //Lege presentation.
-        Presentation presentation;
+        final Presentation presentation;
         //Maakt een intent aan van de meegegeven intent.
         intent = getIntent();
         //Haalt de gegevens op uit de meegegeven presentation.
         presentation = (Presentation) intent.getSerializableExtra("Presentation");
+
+        TextView amountOfFreeSeats = (TextView) findViewById(R.id.ao_amountOfSeats);
+        amountOfFreeSeats.setText("Nog " + presentation.getRoom().getAmountOfFreeSeats() + " plaatsen over!");
 
         ImageView movieImage = findViewById(R.id.ao_movieImage);
         String startOfImageUrl = "https://image.tmdb.org/t/p/w500" + presentation.getMovie().getBigImageUrl();
@@ -55,6 +59,7 @@ public class OrderActivity extends AppCompatActivity {
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                
                 EditText amountStudentTickets = (EditText) findViewById(R.id.ao_studentTicketsAmount);
                 int z = Integer.parseInt(amountStudentTickets.getText().toString());
                 EditText amountAdultTickets = (EditText) findViewById(R.id.ao_adultTicketsAmount);
@@ -62,14 +67,19 @@ public class OrderActivity extends AppCompatActivity {
                 EditText amountChildTickets = (EditText) findViewById(R.id.ao_childTicketsAmount);
                 int y = Integer.parseInt(amountChildTickets.getText().toString());
 
-                x = x * ADULT_RPICE;
-                z = z * STUDENT_PRICE;
-                y = y * CHILD_RPICE;
-                int totalPrice = 0;
-                totalPrice = z + x + y;
-                TextView result = (TextView) findViewById(R.id.ao_calculateResult);
+                int totalTickets = z + x + y;
+                if (totalTickets < presentation.getRoom().getSeats().size()) {
+                    x = x * ADULT_RPICE;
+                    z = z * STUDENT_PRICE;
+                    y = y * CHILD_RPICE;
+                    int totalPrice = 0;
+                    totalPrice = z + x + y;
+                    TextView result = (TextView) findViewById(R.id.ao_calculateResult);
 
-                result.setText(Integer.toString(totalPrice));
+                    result.setText(Integer.toString(totalPrice));
+                } else{
+                    result.setText("Er zijn nog " + presentation.getRoom().getAmountOfFreeSeats() + " plaatsen over");
+                }
             }
         });
 

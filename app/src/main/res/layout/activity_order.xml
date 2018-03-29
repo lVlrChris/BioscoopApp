@@ -37,8 +37,8 @@
 
     <TextView
         android:id="@+id/ao_time"
-        android:layout_width="117dp"
-        android:layout_height="48dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
@@ -218,5 +218,19 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ao_childTextView"
         app:layout_constraintTop_toTopOf="@+id/ao_childTextView" />
+
+    <TextView
+        android:id="@+id/ao_amountOfSeats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ao_movieImage"
+        app:layout_constraintTop_toBottomOf="@+id/ao_time" />
 
 </android.support.constraint.ConstraintLayout>

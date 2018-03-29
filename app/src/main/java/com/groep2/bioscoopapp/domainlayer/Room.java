@@ -47,6 +47,16 @@ public class Room implements Serializable {
         return seats;
     }
 
+    public int getAmountOfFreeSeats(){
+        int counter = 0;
+        for (Seat d : seats){
+            if (!d.isTaken()){
+                counter++;
+            }
+        }
+        return counter;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(this.getRoomID());
