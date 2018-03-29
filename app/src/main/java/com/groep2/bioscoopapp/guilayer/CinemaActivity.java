@@ -17,7 +17,7 @@ public class CinemaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cinema);
 
-        Cinema cinema = new Cinema(" Bioscoop Breda ", "06-12345678", "example.cinema@avans.nl",  "Lovendijkstraat 6, Breda");
+        Cinema cinema = new Cinema(" Bioscoop Breda ", "06-12345678", "avans.cinema@avans.nl",  "Lovendijkstraat 6, Breda");
         String telStartString = "Telefoon : ";
         String mailStartString = "E-mail : ";
         String adresStartSTring = "Adres : ";
