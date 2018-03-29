@@ -59,16 +59,13 @@ public class OrderActivity extends AppCompatActivity {
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
-                EditText amountStudentTickets = (EditText) findViewById(R.id.ao_studentTicketsAmount);
-                int z = Integer.parseInt(amountStudentTickets.getText().toString());
-                EditText amountAdultTickets = (EditText) findViewById(R.id.ao_adultTicketsAmount);
-                int x = Integer.parseInt(amountAdultTickets.getText().toString());
-                EditText amountChildTickets = (EditText) findViewById(R.id.ao_childTicketsAmount);
-                int y = Integer.parseInt(amountChildTickets.getText().toString());
 
+                int z = getStudentTickets();
+                int x = getAdultTickets();
+                int y = getChildTickets();
                 int totalTickets = z + x + y;
-                if (totalTickets < presentation.getRoom().getSeats().size()) {
+
+                if (totalTickets < presentation.getRoom().getAmountOfFreeSeats()) {
                     x = x * ADULT_RPICE;
                     z = z * STUDENT_PRICE;
                     y = y * CHILD_RPICE;
@@ -94,5 +91,33 @@ public class OrderActivity extends AppCompatActivity {
 
         TextView childPrice = (TextView) findViewById(R.id.ao_childPrice);
         childPrice.setText(Integer.toString(CHILD_RPICE));
+    }
+
+    public int getStudentTickets(){
+        EditText amountStudentTickets = (EditText) findViewById(R.id.ao_studentTicketsAmount);
+        int z = 0;
+        if (amountStudentTickets.getText().length() != 0) {
+            z = Integer.parseInt(amountStudentTickets.getText().toString());
+        }
+        return z;
+    }
+
+    public int getAdultTickets(){
+        EditText amountAdultTickets = (EditText) findViewById(R.id.ao_adultTicketsAmount);
+        int x = 0;
+        if (amountAdultTickets.getText().length() != 0) {
+            x = Integer.parseInt(amountAdultTickets.getText().toString());
+        }
+        return x;
+    }
+
+    public int getChildTickets(){
+        EditText amountChildTickets = (EditText) findViewById(R.id.ao_childTicketsAmount);
+        int y = 0;
+        if (amountChildTickets.getText().length() != 0) {
+            y = Integer.parseInt(amountChildTickets.getText().toString());
+        }
+
+        return y;
     }
 }
