@@ -17,49 +17,26 @@
         app:layout_constraintTop_toBottomOf="@+id/am_header"
         app:layout_constraintVertical_bias="1.0" />
 
+    <Button
+        android:id="@+id/am_infoCinemaButton"
+        android:layout_width="28dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="52dp"
+        android:background="@android:drawable/ic_menu_info_details"
+        app:layout_constraintBottom_toBottomOf="@+id/am_headerTitle"
+        app:layout_constraintStart_toEndOf="@+id/am_headerTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
     <ImageView
         android:id="@+id/am_header"
         android:layout_width="0dp"
-        android:layout_height="69dp"
+        android:layout_height="46dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/am_topHeader"
         app:srcCompat="@color/headerThemeBlack" />
-
-    <TextView
-        android:id="@+id/am_headerTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Bioscoop Breda"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/am_header"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/am_header"
-        app:layout_constraintVertical_bias="0.174" />
-
-    <Button
-        android:id="@+id/am_infoCinemaButton"
-        android:layout_width="28dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/ic_menu_info_details"
-        app:layout_constraintBottom_toBottomOf="@+id/am_header"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/am_header"
-        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/am_topHeader"
@@ -70,18 +47,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/am_headerTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="serif"
+        android:text="Bioscoop Breda"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="@+id/am_topHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/am_userbutton"
         android:layout_width="28dp"
         android:layout_height="33dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@android:drawable/sym_def_app_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/am_topHeader" />
+
+    <TextView
+        android:id="@+id/am_MovieHeaderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:src="@drawable/icon"
-        app:layout_constraintBottom_toBottomOf="@+id/am_topHeader"
+        android:layout_marginTop="8dp"
+        android:text="Films"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/am_header"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/am_topHeader"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/am_header"
         app:layout_constraintVertical_bias="1.0" />
+
 </android.support.constraint.ConstraintLayout>
