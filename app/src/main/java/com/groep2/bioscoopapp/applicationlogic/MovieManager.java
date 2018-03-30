@@ -1,5 +1,6 @@
 package com.groep2.bioscoopapp.applicationlogic;
 
+import com.groep2.bioscoopapp.dataaccess.MovieApiDao;
 import com.groep2.bioscoopapp.domainlayer.Movie;
 
 import java.util.ArrayList;
@@ -10,9 +11,12 @@ import java.util.ArrayList;
 
 public class MovieManager {
 
+    private MovieApiDao movieApiDao;
+
     private ArrayList<Movie> movies;
 
-    public MovieManager(){
+    public MovieManager(MovieListener listener){
+        movieApiDao = new MovieApiDao(listener);
         this.movies = new ArrayList<Movie>();
     }
 
