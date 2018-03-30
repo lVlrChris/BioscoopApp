@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
-        android:layout_height="119dp"
+        android:layout_height="144dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,18 +29,19 @@
     <TextView
         android:id="@+id/ml_title"
         android:layout_width="0dp"
-        android:layout_height="68dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="35dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif"
         android:text="Title"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
+        android:textAllCaps="true"
         android:textColor="@android:color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

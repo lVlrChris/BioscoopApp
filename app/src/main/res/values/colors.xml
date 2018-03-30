@@ -2,5 +2,14 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ff4081</color>
+    
+    //Standaard kleuren
+    <color name="black">#2b2b31</color>
+    <color name="white">#ffffff</color>
+    <color name="red">#dc143c</color>
+
+    //thema kleuren
+    <color name="headerThemeBlack">#192229</color>
+    <color name="headerThemeDark">#161f26</color>
 </resources>

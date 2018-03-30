@@ -1,8 +1,7 @@
-package com.groep2.bioscoopapp.domainlayer;
+package com.groep2.bioscoopapp.dataaccess;
 
 import android.os.AsyncTask;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -11,14 +10,14 @@ import java.net.URL;
 import java.net.URLConnection;
 
 /**
- * Created by Kevin van Loon on 26-3-2018.
+ * Created by Kevin van Loon on 27-3-2018.
  */
 
-public class MovieAsyncTask extends AsyncTask<String, Void, String> {
+public class ApiConnection extends AsyncTask<String, Void, String> {
 
-    private MovieListener listener;
+    private MovieApiListener listener;
 
-    public MovieAsyncTask(MovieListener listener) {
+    public ApiConnection(MovieApiListener listener) {
         this.listener = listener;
     }
 
@@ -55,25 +54,12 @@ public class MovieAsyncTask extends AsyncTask<String, Void, String> {
         return response;
     }
 
+    @Override
     protected void onPostExecute(String response) {
-
         try {
-            JSONObject object = new JSONObject(response);
-            JSONArray jsonArray = object.getJSONArray("results");
-
-
-
-            for (int i = 0; i < jsonArray.length(); i++){
-                Movie movie = new Movie();
-
-                String title = jsonArray.getJSONObject(i).getString("title");
-                movie.setTitle(title);
-                String url = jsonArray.getJSONObject(i).getString("backdrop_path");
-                movie.setImageUrl(url);
-                listener.onMovieExecute(movie);
-            }
-
-        }catch (Exception e){
+            JSONObject resultSet = new JSONObject(response);
+            listener.onResultSetAvailable(resultSet);
+        } catch (Exception e) {
 
         }
     }

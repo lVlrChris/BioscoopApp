@@ -1,4 +1,4 @@
-package com.groep2.bioscoopapp.domainlayer;
+package com.groep2.bioscoopapp.applicationlogic;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.groep2.bioscoopapp.R;
+import com.groep2.bioscoopapp.domainlayer.Movie;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -43,8 +44,10 @@ public class MovieAdapter extends ArrayAdapter<Movie>{
         name.setText(movie.getTitle());
 
         ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
-        String startOfImageUrl = "https://image.tmdb.org/t/p/w500" + movie.getImageUrl();
+        String startOfImageUrl = "https://image.tmdb.org/t/p/w500" + movie.getSmallImageUrl();
         Picasso.with(getContext()).load(startOfImageUrl).into(imageView);
+
+
 
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
