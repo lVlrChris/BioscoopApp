@@ -48,6 +48,8 @@ public class MovieApiDao implements MovieApiListener {
                 movie.setBigImageUrl(bigUrl);
                 String desc = jsonArray.getJSONObject(i).getString("overview");
                 movie.setDescription(desc);
+                int ID = jsonArray.getJSONObject(i).getInt("id");
+                movie.setMovieID(ID);
 
                 listener.onMovieExecute(movie);
             }

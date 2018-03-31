@@ -16,7 +16,7 @@ import com.groep2.bioscoopapp.applicationlogic.MovieListener;
 
 public class MainActivity extends AppCompatActivity implements MovieListener {
 
-    MovieManager manager;
+    MovieManager movieManager;
     MovieAdapter adapter;
     ListView moviesListView;
 
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements MovieListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.manager = new MovieManager(this);
+        this.movieManager = MovieManager.getInstance(this);
 
         setupUI();
     }
@@ -34,14 +34,14 @@ public class MainActivity extends AppCompatActivity implements MovieListener {
         Button infobutton = findViewById(R.id.am_infoCinemaButton);
         moviesListView = findViewById(R.id.am_listview);
 
-        adapter = new MovieAdapter(this, manager.getMovies());
+        adapter = new MovieAdapter(this, movieManager.getMovies());
         moviesListView.setAdapter(adapter);
 
         //Als er op een item uit de list wordt geklikt
         moviesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Movie movie = manager.getMovies().get(position);
+                Movie movie = movieManager.getMovies().get(position);
                 //Maakt nieuwe intent aan
                 Intent intent = new Intent(getApplicationContext(),DetailActivity.class);
                 //Geeft movie object mee aan de intent
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements MovieListener {
     //callback
     @Override
     public void onMovieExecute(Movie movie) {
-        manager.addMovie(movie);
+        movieManager.addMovie(movie);
         adapter.notifyDataSetChanged();
     }
 }

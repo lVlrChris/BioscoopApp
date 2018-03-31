@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.groep2.bioscoopapp.R;
+import com.groep2.bioscoopapp.applicationlogic.MovieManager;
+import com.groep2.bioscoopapp.applicationlogic.PresentationManager;
 import com.groep2.bioscoopapp.domainlayer.Movie;
 import com.groep2.bioscoopapp.domainlayer.Presentation;
 import com.groep2.bioscoopapp.domainlayer.Room;
@@ -23,6 +26,8 @@ import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
 
+    private PresentationManager presManager;
+
     private Presentation chosenPresentation;
     ListView presentations = null;
 
@@ -31,11 +36,10 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        presManager = PresentationManager.getInstance();
+
         presentations = findViewById(R.id.ad_presentationList);
         Button orderButton = findViewById(R.id.ad_reserveren);
-
-
-
 
         //Lege intent.
         Intent intent;
@@ -59,17 +63,10 @@ public class DetailActivity extends AppCompatActivity {
         desc.setMovementMethod(new ScrollingMovementMethod());
         desc.setText(movie.getDescription());
 
-        //Maakt fake data presentation aans
-        Presentation presentation1 = new Presentation(movie, new Room(1), "17:00");
-        Presentation presentation2 = new Presentation(movie, new Room(1), "21:00");
-
-        //Vult de presentations
-        final ArrayList<Presentation> presentationList = new ArrayList<>();
-        presentationList.add(presentation1);
-        presentationList.add(presentation2);
+        final ArrayList<Presentation> presentationList = presManager.getMoviePresentations(movie);
 
         //Adapter van presentations
-        ArrayAdapter<Presentation> adapter=new ArrayAdapter<Presentation>(this,
+        ArrayAdapter<Presentation> adapter = new ArrayAdapter<Presentation>(this,
                 android.R.layout.simple_list_item_1,
                 presentationList);
 
@@ -103,7 +100,5 @@ public class DetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 }

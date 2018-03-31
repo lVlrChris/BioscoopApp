@@ -7,6 +7,8 @@ import java.io.Serializable;
  */
 
 public class Movie implements Serializable{
+
+    private int movieID;
     private String title;
     private String smallImageUrl;
     private String bigImageUrl;
@@ -17,6 +19,13 @@ public class Movie implements Serializable{
     }
 
     public Movie(String title, String imageUrl, String bigImageUrl, String description) {
+        this.title = title;
+        this.smallImageUrl = imageUrl;
+        this.bigImageUrl = bigImageUrl;
+        this.description = description;
+    }
+
+    public Movie(String title, String imageUrl, String bigImageUrl, String description, int movieID) {
         this.title = title;
         this.smallImageUrl = imageUrl;
         this.bigImageUrl = bigImageUrl;
@@ -53,5 +62,13 @@ public class Movie implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getMovieID() {
+        return movieID;
+    }
+
+    public void setMovieID(int movieID) {
+        this.movieID = movieID;
     }
 }
