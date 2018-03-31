@@ -1,5 +1,7 @@
 package com.groep2.bioscoopapp.applicationlogic;
 
+import android.util.Log;
+
 import com.groep2.bioscoopapp.dataaccess.MovieApiDao;
 import com.groep2.bioscoopapp.domainlayer.Movie;
 
@@ -11,13 +13,33 @@ import java.util.ArrayList;
 
 public class MovieManager {
 
+    private static MovieManager instance;
     private MovieApiDao movieApiDao;
 
     private ArrayList<Movie> movies;
 
-    public MovieManager(MovieListener listener){
+    //Constructor protected to make singleton
+    protected MovieManager(MovieListener listener){
         movieApiDao = new MovieApiDao(listener);
         this.movies = new ArrayList<Movie>();
+    }
+
+    //Singleton instance
+    public static MovieManager getInstance(MovieListener listener) {
+        if(instance == null) {
+            instance = new MovieManager(listener);
+        }
+
+        return instance;
+    }
+
+    //Constructor for later use (when listener is already assigned)
+    public static MovieManager getInstance() {
+        if(instance == null) {
+            Log.d("", "Manager isntance doesn't exist, use getInstance with listener");
+        }
+
+        return instance;
     }
 
     public ArrayList<Movie> getMovies(){
