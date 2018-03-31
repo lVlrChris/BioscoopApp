@@ -10,29 +10,38 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.groep2.bioscoopapp.R;
+import com.groep2.bioscoopapp.applicationlogic.TicketManager;
+import com.groep2.bioscoopapp.domainlayer.AdultTicket;
+import com.groep2.bioscoopapp.domainlayer.ChildTicket;
 import com.groep2.bioscoopapp.domainlayer.Movie;
 import com.groep2.bioscoopapp.domainlayer.Presentation;
+import com.groep2.bioscoopapp.domainlayer.StudentTicket;
+import com.groep2.bioscoopapp.domainlayer.Ticket;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 public class OrderActivity extends AppCompatActivity {
 
     private final int STUDENT_PRICE = 8;
-
     private final int ADULT_RPICE = 10;
-    TextView result;
-
     private final int CHILD_RPICE = 5;
+    private ArrayList<Ticket> tickets = new ArrayList<>();
+    Presentation presentation;
+    TicketManager ticketManager;
+    TextView result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         result = (TextView) findViewById(R.id.ao_calculateResult);
+        ticketManager = new TicketManager();
         //Lege intent.
         Intent intent;
         //Lege presentation.
-        final Presentation presentation;
+      //  final Presentation presentation;
         //Maakt een intent aan van de meegegeven intent.
         intent = getIntent();
         //Haalt de gegevens op uit de meegegeven presentation.
@@ -51,7 +60,6 @@ public class OrderActivity extends AppCompatActivity {
         TextView time = findViewById(R.id.ao_time);
         time.setText("Op " + presentation.getDate() + " in zaal " + presentation.getRoom());
 
-
         setTicketPrices();
 
         Button calculateButton = (Button) findViewById(R.id.ao_calculatePriceButton);
@@ -60,19 +68,13 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                int z = getStudentTickets();
-                int x = getAdultTickets();
-                int y = getChildTickets();
-                int totalTickets = z + x + y;
+                int totalTickets = getTotalTickets();
 
                 if (totalTickets < presentation.getRoom().getAmountOfFreeSeats()) {
-                    x = x * ADULT_RPICE;
-                    z = z * STUDENT_PRICE;
-                    y = y * CHILD_RPICE;
-                    int totalPrice = 0;
-                    totalPrice = z + x + y;
-                    TextView result = (TextView) findViewById(R.id.ao_calculateResult);
-
+                    int xSum = getAdultTickets() * ADULT_RPICE;
+                    int zSum = getStudentTickets() * STUDENT_PRICE;
+                    int ySum = getChildTickets() * CHILD_RPICE;
+                    int totalPrice = zSum + xSum + ySum;
                     result.setText(Integer.toString(totalPrice));
                 } else{
                     result.setText("Er zijn nog " + presentation.getRoom().getAmountOfFreeSeats() + " plaatsen over");
@@ -120,4 +122,35 @@ public class OrderActivity extends AppCompatActivity {
 
         return y;
     }
+
+    public int getTotalTickets(){
+        int total;
+        return total = getAdultTickets() + getChildTickets() + getStudentTickets();
+    }
+
+    public void paymentButtonClicked(View view) {
+
+        ticketManager.clearTickets();
+        Intent intent = new Intent(getApplicationContext(),PaymentActivity.class);
+        for (int i = 0; i<getStudentTickets(); i++){
+            Ticket studentTicket = new StudentTicket(presentation, presentation.getRoom().getASeat());
+            ticketManager.addTicket(studentTicket);
+        }
+
+        for (int i = 0; i < getChildTickets(); i++){
+            Ticket ChildTicket = new ChildTicket(presentation, presentation.getRoom().getASeat());
+            ticketManager.addTicket(ChildTicket);
+        }
+
+        for (int i = 0; i < getChildTickets(); i++){
+            Ticket adultTicket = new AdultTicket(presentation, presentation.getRoom().getASeat());
+            ticketManager.addTicket(adultTicket);
+        }
+
+        intent.putExtra("Manager", ticketManager);
+        startActivity(intent);
+
+    }
+
+
 }

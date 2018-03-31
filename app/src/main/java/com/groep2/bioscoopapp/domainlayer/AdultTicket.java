@@ -3,15 +3,16 @@ package com.groep2.bioscoopapp.domainlayer;
 import java.io.Serializable;
 
 /**
- * Created by Kevin van Loon on 28-3-2018.
+ * Created by Kevin van Loon on 31-3-2018.
  */
 
-public class StudentTicket extends Ticket implements Serializable {
+public class AdultTicket extends Ticket implements Serializable {
 
     private int price;
-    public StudentTicket(Presentation presentation, Seat seat){
+
+    public AdultTicket(Presentation presentation, Seat seat) {
         super(presentation, seat);
-        this.price = 8;
+        this.price = 10;
     }
 
     public int getPrice() {
@@ -21,5 +22,4 @@ public class StudentTicket extends Ticket implements Serializable {
     public void setPrice(int price) {
         this.price = price;
     }
-
 }

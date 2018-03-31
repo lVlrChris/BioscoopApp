@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".guilayer.DetailActivity" />
         <activity android:name=".guilayer.CinemaActivity" />
-        <activity android:name=".guilayer.OrderActivity"></activity>
+        <activity android:name=".guilayer.OrderActivity" />
+        <activity android:name=".guilayer.PaymentActivity"></activity>
     </application>
 
 </manifest>
