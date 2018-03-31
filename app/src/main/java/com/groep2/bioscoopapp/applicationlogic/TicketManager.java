@@ -1,5 +1,6 @@
 package com.groep2.bioscoopapp.applicationlogic;
 
+<<<<<<< HEAD
 import com.groep2.bioscoopapp.domainlayer.Ticket;
 
 import java.io.Serializable;
@@ -33,4 +34,9 @@ public class TicketManager implements Serializable{
     public void clearTickets(){
         this.tickets.clear();
     }
+=======
+public class TicketManager {
+
+
+>>>>>>> e7dfd6d99cb47a54a35669bf1a8a3f622878befc
 }
