@@ -64,17 +64,18 @@ public class Movie implements Serializable{
         this.description = description;
     }
 
-<<<<<<< HEAD
+
     @Override
     public String toString() {
         return this.title;
-=======
+    }
+
     public int getMovieID() {
         return movieID;
     }
 
     public void setMovieID(int movieID) {
         this.movieID = movieID;
->>>>>>> e7dfd6d99cb47a54a35669bf1a8a3f622878befc
+
     }
 }
