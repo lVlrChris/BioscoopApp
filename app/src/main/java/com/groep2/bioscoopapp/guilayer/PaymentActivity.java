@@ -36,7 +36,5 @@ public class PaymentActivity extends AppCompatActivity {
         adapter = new TicketAdapter(this, manager.getTickets());
         tickets.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-        TextView test = (TextView) findViewById(R.id.ap_info);
-        test.setText(manager.getTickets().toString());
     }
 }

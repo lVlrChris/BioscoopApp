@@ -15,4 +15,9 @@ public class AdultTicket extends Ticket implements Serializable {
         this.price = 10;
     }
 
+    @Override
+    public int getPrice() {
+        return 10;
+    }
+
 }

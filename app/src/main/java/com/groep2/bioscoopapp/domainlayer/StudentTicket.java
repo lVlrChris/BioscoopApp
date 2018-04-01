@@ -15,7 +15,7 @@ public class StudentTicket extends Ticket implements Serializable {
     }
 
     public int getPrice() {
-        return price;
+        return 8;
     }
 
     public void setPrice(int price) {

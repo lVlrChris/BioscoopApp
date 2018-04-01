@@ -18,6 +18,8 @@ public abstract class Ticket implements Serializable {
         this.seat = seat;
     }
 
+    abstract int getPrice();
+
     public Presentation getPresentation() {
         return presentation;
     }
