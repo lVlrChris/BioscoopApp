@@ -49,4 +49,9 @@ public class Cinema {
     public void setAdress(String adress) {
         this.adress = adress;
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

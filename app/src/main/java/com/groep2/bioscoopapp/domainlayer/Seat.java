@@ -32,5 +32,8 @@ public class Seat implements Serializable{
         isTaken = taken;
     }
 
-
+    @Override
+    public String toString() {
+        return Integer.toString(this.seatID);
+    }
 }

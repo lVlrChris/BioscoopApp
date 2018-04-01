@@ -57,6 +57,10 @@ public class Room implements Serializable {
         return counter;
     }
 
+    public Seat getASeat(){
+        return seats.get(0);
+    }
+
     @Override
     public String toString() {
         return Integer.toString(this.getRoomID());

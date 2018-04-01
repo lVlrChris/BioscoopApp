@@ -1,33 +1,42 @@
 package com.groep2.bioscoopapp.domainlayer;
 
+import java.io.Serializable;
+
 /**
  * Created by Kevin van Loon on 28-3-2018.
  */
 
-public abstract class Ticket {
+public abstract class Ticket implements Serializable {
 
-    private double price;
+    private Presentation presentation;
+    private Seat seat;
+    private int price;
     private String name;
 
-
-    public double getPrice() {
-        return price;
+    public Ticket(Presentation presentation, Seat seat) {
+        this.presentation = presentation;
+        this.seat = seat;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public Presentation getPresentation() {
+        return presentation;
     }
 
-    public String getName() {
-        return name;
+    public void setPresentation(Presentation presentation) {
+        this.presentation = presentation;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Seat getSeat() {
+        return seat;
+    }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
     }
 
     @Override
     public String toString() {
-        return this.name + " " + this.price;
+        return this.presentation.getMovie().getTitle() + this.presentation.getRoom() + this.presentation.getDate() + this.seat.toString();
     }
 }
+
