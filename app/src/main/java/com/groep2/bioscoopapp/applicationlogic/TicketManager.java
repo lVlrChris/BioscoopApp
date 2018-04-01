@@ -12,17 +12,17 @@ import java.util.List;
 
 public class TicketManager implements Serializable {
 
-    public List<Ticket> tickets;
+    public ArrayList<Ticket> tickets;
 
     public TicketManager() {
         this.tickets = new ArrayList<>();
     }
 
-    public List<Ticket> getTickets() {
+    public ArrayList<Ticket> getTickets() {
         return tickets;
     }
 
-    public void setTickets(List<Ticket> tickets) {
+    public void setTickets(ArrayList<Ticket> tickets) {
         this.tickets = tickets;
     }
 

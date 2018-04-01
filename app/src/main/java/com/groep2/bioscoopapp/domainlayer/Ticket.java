@@ -10,6 +10,8 @@ public abstract class Ticket implements Serializable {
 
     private Presentation presentation;
     private Seat seat;
+    private int price;
+    private String name;
 
     public Ticket(Presentation presentation, Seat seat) {
         this.presentation = presentation;

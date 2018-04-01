@@ -131,25 +131,28 @@ public class OrderActivity extends AppCompatActivity {
     public void paymentButtonClicked(View view) {
 
         ticketManager.clearTickets();
-        Intent intent = new Intent(getApplicationContext(),PaymentActivity.class);
-        for (int i = 0; i<getStudentTickets(); i++){
-            Ticket studentTicket = new StudentTicket(presentation, presentation.getRoom().getASeat());
-            ticketManager.addTicket(studentTicket);
+        if (getTotalTickets() > 0) {
+            Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
+            for (int i = 0; i < getStudentTickets(); i++) {
+                Ticket studentTicket = new StudentTicket(presentation, presentation.getRoom().getASeat());
+                ticketManager.addTicket(studentTicket);
+            }
+
+            for (int i = 0; i < getChildTickets(); i++) {
+                Ticket ChildTicket = new ChildTicket(presentation, presentation.getRoom().getASeat());
+                ticketManager.addTicket(ChildTicket);
+            }
+
+            for (int i = 0; i < getChildTickets(); i++) {
+                Ticket adultTicket = new AdultTicket(presentation, presentation.getRoom().getASeat());
+                ticketManager.addTicket(adultTicket);
+            }
+
+            intent.putExtra("Manager", ticketManager);
+            startActivity(intent);
+        } else {
+            result.setText("Kies minimaal 1 kaartje");
         }
-
-        for (int i = 0; i < getChildTickets(); i++){
-            Ticket ChildTicket = new ChildTicket(presentation, presentation.getRoom().getASeat());
-            ticketManager.addTicket(ChildTicket);
-        }
-
-        for (int i = 0; i < getChildTickets(); i++){
-            Ticket adultTicket = new AdultTicket(presentation, presentation.getRoom().getASeat());
-            ticketManager.addTicket(adultTicket);
-        }
-
-        intent.putExtra("Manager", ticketManager);
-        startActivity(intent);
-
     }
 
 

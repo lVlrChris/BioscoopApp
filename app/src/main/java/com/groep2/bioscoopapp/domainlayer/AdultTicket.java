@@ -15,11 +15,4 @@ public class AdultTicket extends Ticket implements Serializable {
         this.price = 10;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
 }
