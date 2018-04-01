@@ -150,8 +150,10 @@ public class OrderActivity extends AppCompatActivity {
 
             intent.putExtra("Manager", ticketManager);
             startActivity(intent);
-        } else {
+        } else if (getTotalTickets() == 0){
             result.setText("Kies minimaal 1 kaartje");
+        } else {
+            result.setText("Er zijn nog maar" + presentation.getRoom().getSeats().size() + " beschikbaar");
         }
     }
 
