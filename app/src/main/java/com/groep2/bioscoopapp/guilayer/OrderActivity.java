@@ -143,7 +143,7 @@ public class OrderActivity extends AppCompatActivity {
                 ticketManager.addTicket(ChildTicket);
             }
 
-            for (int i = 0; i < getChildTickets(); i++) {
+            for (int i = 0; i < getAdultTickets(); i++) {
                 Ticket adultTicket = new AdultTicket(presentation, presentation.getRoom().getASeat());
                 ticketManager.addTicket(adultTicket);
             }

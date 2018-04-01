@@ -31,7 +31,5 @@ public class CinemaActivity extends AppCompatActivity {
         TextView tel = findViewById(R.id.ca_phoneNumber);
         tel.setText(telStartString + cinema.getTel());
 
-
-
     }
 }
