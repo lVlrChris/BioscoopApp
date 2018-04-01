@@ -131,7 +131,7 @@ public class OrderActivity extends AppCompatActivity {
     public void paymentButtonClicked(View view) {
 
         ticketManager.clearTickets();
-        if (getTotalTickets() > 0) {
+        if (getTotalTickets() > 0 && getTotalTickets() < presentation.getRoom().getSeats().size()) {
             Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
             for (int i = 0; i < getStudentTickets(); i++) {
                 Ticket studentTicket = new StudentTicket(presentation, presentation.getRoom().getASeat());
