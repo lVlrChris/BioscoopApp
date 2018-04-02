@@ -153,7 +153,7 @@ public class OrderActivity extends AppCompatActivity {
         } else if (getTotalTickets() == 0){
             result.setText("Kies minimaal 1 kaartje");
         } else if (getTotalTickets() > presentation.getRoom().getSeats().size()){
-            result.setText("Er zijn nog maar" + presentation.getRoom().getSeats().size() + " beschikbaar");
+            result.setText("Er zijn nog " + presentation.getRoom().getSeats().size() + " stoelen beschikbaar");
         }
     }
 
