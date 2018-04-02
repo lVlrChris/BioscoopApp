@@ -14,7 +14,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/red" />
+        app:srcCompat="@android:color/darker_gray" />
 
     <ImageView
         android:id="@+id/tl_qrCode"

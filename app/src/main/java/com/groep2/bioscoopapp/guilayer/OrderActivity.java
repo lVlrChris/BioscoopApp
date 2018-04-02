@@ -70,7 +70,7 @@ public class OrderActivity extends AppCompatActivity {
 
                 int totalTickets = getTotalTickets();
 
-                if (totalTickets < presentation.getRoom().getAmountOfFreeSeats()) {
+                if (totalTickets <= presentation.getRoom().getAmountOfFreeSeats()) {
                     int xSum = getAdultTickets() * ADULT_RPICE;
                     int zSum = getStudentTickets() * STUDENT_PRICE;
                     int ySum = getChildTickets() * CHILD_RPICE;
@@ -131,7 +131,7 @@ public class OrderActivity extends AppCompatActivity {
     public void paymentButtonClicked(View view) {
 
         ticketManager.clearTickets();
-        if (getTotalTickets() > 0 && getTotalTickets() < presentation.getRoom().getSeats().size()) {
+        if (getTotalTickets() > 0 && getTotalTickets() <= presentation.getRoom().getSeats().size()) {
             Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
             for (int i = 0; i < getStudentTickets(); i++) {
                 Ticket studentTicket = new StudentTicket(presentation, presentation.getRoom().getASeat());
@@ -152,7 +152,7 @@ public class OrderActivity extends AppCompatActivity {
             startActivity(intent);
         } else if (getTotalTickets() == 0){
             result.setText("Kies minimaal 1 kaartje");
-        } else {
+        } else if (getTotalTickets() > presentation.getRoom().getSeats().size()){
             result.setText("Er zijn nog maar" + presentation.getRoom().getSeats().size() + " beschikbaar");
         }
     }
