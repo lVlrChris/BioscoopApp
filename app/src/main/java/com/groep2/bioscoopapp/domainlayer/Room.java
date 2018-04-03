@@ -59,6 +59,7 @@ public class Room implements Serializable {
 
     public Seat getASeat(){
         Seat seat = seats.get(0);
+        seats.remove(0);
         return seat;
     }
 
