@@ -30,8 +30,6 @@ public class PaymentActivity extends AppCompatActivity {
         //Haalt de gegevens op uit de meegegeven movie.
         manager = (TicketManager) intent.getSerializableExtra("Manager");
         //Zet de titel van de film
-
-
         tickets = findViewById(R.id.ap_ticketList);
         adapter = new TicketAdapter(this, manager.getTickets());
         tickets.setAdapter(adapter);

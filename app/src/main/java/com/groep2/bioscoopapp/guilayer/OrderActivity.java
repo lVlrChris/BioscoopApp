@@ -75,7 +75,7 @@ public class OrderActivity extends AppCompatActivity {
                     int zSum = getStudentTickets() * STUDENT_PRICE;
                     int ySum = getChildTickets() * CHILD_RPICE;
                     int totalPrice = zSum + xSum + ySum;
-                    result.setText(Integer.toString(totalPrice));
+                    result.setText("Totaal €" +Integer.toString(totalPrice));
                 } else{
                     result.setText("Er zijn nog " + presentation.getRoom().getAmountOfFreeSeats() + " plaatsen over");
                 }
@@ -86,13 +86,13 @@ public class OrderActivity extends AppCompatActivity {
 
     public void setTicketPrices(){
         TextView studentPrice = (TextView) findViewById(R.id.ao_studentPrice);
-        studentPrice.setText(Integer.toString(STUDENT_PRICE));
+        studentPrice.setText("€" +Integer.toString(STUDENT_PRICE));
 
         TextView adultPrice = (TextView) findViewById(R.id.ao_adultPRice);
-        adultPrice.setText(Integer.toString(ADULT_RPICE));
+        adultPrice.setText("€" +Integer.toString(ADULT_RPICE));
 
         TextView childPrice = (TextView) findViewById(R.id.ao_childPrice);
-        childPrice.setText(Integer.toString(CHILD_RPICE));
+        childPrice.setText("€" + Integer.toString(CHILD_RPICE));
     }
 
     public int getStudentTickets(){
