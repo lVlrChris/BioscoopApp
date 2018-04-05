@@ -90,7 +90,7 @@ public class TicketSQLDAO extends AsyncTask<String, Void, Cursor> {
             result = db.rawQuery("SELECT * FROM " + SqlContract.Ticket.TABLE_NAME,null);
 
         } else {
-            selectionClause = SqlContract.Ticket._ID + "=?";
+            selectionClause = SqlContract.Ticket.COLUMN_NAME_PRESENTATION_ID + "=?";
             selectionArgs[0] = params[0];
 
             //Query execution
@@ -117,12 +117,12 @@ public class TicketSQLDAO extends AsyncTask<String, Void, Cursor> {
                 int id = qCursor.getInt(0);
                 int userID = qCursor.getInt(1);
                 int presentationID = qCursor.getInt(2);
-                String seatID = qCursor.getString(3);
+                int seatID = qCursor.getInt(3);
 
                 //TODO: Make the actual tickets
                 Ticket newTicket = new StudentTicket(new User(userID),
                         presentationManager.getPresentation(presentationID),
-                        new Seat(new Random().nextInt(8 ) + 1));
+                        new Seat(seatID));
                 result.add(newTicket);
             }
         }

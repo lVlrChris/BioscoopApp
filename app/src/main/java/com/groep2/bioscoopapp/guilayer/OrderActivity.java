@@ -133,21 +133,26 @@ public class OrderActivity extends AppCompatActivity {
 
     public void paymentButtonClicked(View view) {
 
+        ticketManager.clearOrderTickets();
+
         if (getTotalTickets() > 0 && getTotalTickets() <= presentation.getRoom().getSeats().size()) {
             Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
             for (int i = 0; i < getStudentTickets(); i++) {
                 Ticket studentTicket = new StudentTicket(new User(1), presentation, presentation.getRoom().getASeat());
                 ticketManager.addTicket(studentTicket);
+                ticketManager.addOrderTicket(studentTicket);
             }
 
             for (int i = 0; i < getChildTickets(); i++) {
-                Ticket ChildTicket = new ChildTicket(new User(1), presentation, presentation.getRoom().getASeat());
-                ticketManager.addTicket(ChildTicket);
+                Ticket childTicket = new ChildTicket(new User(1), presentation, presentation.getRoom().getASeat());
+                ticketManager.addTicket(childTicket);
+                ticketManager.addOrderTicket(childTicket);
             }
 
             for (int i = 0; i < getAdultTickets(); i++) {
                 Ticket adultTicket = new AdultTicket(new User(1), presentation, presentation.getRoom().getASeat());
                 ticketManager.addTicket(adultTicket);
+                ticketManager.addOrderTicket(adultTicket);
             }
 
             startActivity(intent);
