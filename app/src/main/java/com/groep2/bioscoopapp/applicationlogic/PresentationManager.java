@@ -46,6 +46,15 @@ public class PresentationManager {
         return presentations;
     }
 
+    public Presentation getPresentation(int presentationID) {
+        for (Presentation pres : presentations) {
+            if (pres.getId() == presentationID) {
+                return pres;
+            }
+        }
+        return null;
+    }
+
     public void fillFakeData() {
         int idIterator = 0;
         for (Movie movie : movieManager.getMovies()) {

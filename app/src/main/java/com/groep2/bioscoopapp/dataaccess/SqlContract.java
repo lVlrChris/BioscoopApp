@@ -15,6 +15,8 @@ public final class SqlContract {
     public static final String TEXT_TYPE = " TEXT";
     public static final String INT_TYPE = " INTEGER";
     public static final String COMMA_SEP = ",";
+    public static final String FOREIGN_KEY =  "FOREIGN KEY (";
+    public static final String REFERENCES = ") REFERENCES ";
 
     //Inner classes to define table and column names
     //Ticket table
@@ -31,7 +33,14 @@ public final class SqlContract {
                 _ID + " INTEGER PRIMARY KEY," +
                 COLUMN_NAME_USER_ID + INT_TYPE + COMMA_SEP +
                 COLUMN_NAME_PRESENTATION_ID + INT_TYPE + COMMA_SEP +
-                COLUMN_NAME_SEAT_ID + INT_TYPE + " )";
+                COLUMN_NAME_SEAT_ID + INT_TYPE +
+                FOREIGN_KEY + COLUMN_NAME_USER_ID +
+                REFERENCES + User.TABLE_NAME + "(" + User._ID + ")" +
+                FOREIGN_KEY + COLUMN_NAME_PRESENTATION_ID +
+                REFERENCES + Presentation.TABLE_NAME + "(" + Presentation._ID + ")" +
+                FOREIGN_KEY + COLUMN_NAME_SEAT_ID +
+                REFERENCES + Seat.TABLE_NAME + "(" + Seat._ID + ")" +
+                ");";
 
         //Drop Table query
         public static  final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
@@ -50,13 +59,14 @@ public final class SqlContract {
     public static class Presentation implements BaseColumns {
         public static final String TABLE_NAME = "Presentation";
         public static final String COLUMN_NAME_DATETIME = "TimeDate";
-        public static final String COLUMN_NAME_ROOM_ID = "RooomID";
+        public static final String COLUMN_NAME_ROOM_ID = "RoomID";
 
         public static final String CREATE_TABLE = "CREATE TABLE " +
                 TABLE_NAME + " (" +
                 _ID + " INTEGER PRIMARY KEY," +
                 COLUMN_NAME_DATETIME + " DATETIME," +
-                COLUMN_NAME_ROOM_ID + INT_TYPE + "  )";
+                COLUMN_NAME_ROOM_ID + INT_TYPE +
+                ");";
 
         public static  final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     }

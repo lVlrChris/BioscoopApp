@@ -54,4 +54,12 @@ public class MovieManager {
         this.movies.add(movie);
     }
 
+    public Movie getMovie(int movieID) {
+        for (Movie movie : movies) {
+            if (movie.getMovieID() == movieID) {
+                return movie;
+            }
+        }
+        return null;
+    }
 }
