@@ -8,14 +8,24 @@ import java.io.Serializable;
 
 public class Presentation implements Serializable {
 
+    private int id;
     private Movie movie;
     private Room room;
     private String date;
 
-    public Presentation(Movie movie, Room room, String date) {
+    public Presentation(int id, Movie movie, Room room, String date) {
+        this.id = id;
         this.movie = movie;
         this.room = room;
         this.date = date;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Movie getMovie() {

@@ -17,11 +17,14 @@ import com.groep2.bioscoopapp.domainlayer.Movie;
 import com.groep2.bioscoopapp.domainlayer.Presentation;
 import com.groep2.bioscoopapp.domainlayer.StudentTicket;
 import com.groep2.bioscoopapp.domainlayer.Ticket;
+import com.groep2.bioscoopapp.domainlayer.User;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+
+import static com.groep2.bioscoopapp.applicationlogic.TicketManager.getInstance;
 
 public class OrderActivity extends AppCompatActivity {
 
@@ -37,7 +40,7 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         result = (TextView) findViewById(R.id.ao_calculateResult);
-        ticketManager = new TicketManager();
+        ticketManager = getInstance(getApplicationContext());
         //Lege intent.
         Intent intent;
         //Lege presentation.
@@ -130,26 +133,25 @@ public class OrderActivity extends AppCompatActivity {
 
     public void paymentButtonClicked(View view) {
 
-        ticketManager.clearTickets();
         if (getTotalTickets() > 0 && getTotalTickets() <= presentation.getRoom().getSeats().size()) {
             Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
             for (int i = 0; i < getStudentTickets(); i++) {
-                Ticket studentTicket = new StudentTicket(presentation, presentation.getRoom().getASeat());
+                Ticket studentTicket = new StudentTicket(new User(1), presentation, presentation.getRoom().getASeat());
                 ticketManager.addTicket(studentTicket);
             }
 
             for (int i = 0; i < getChildTickets(); i++) {
-                Ticket ChildTicket = new ChildTicket(presentation, presentation.getRoom().getASeat());
+                Ticket ChildTicket = new ChildTicket(new User(1), presentation, presentation.getRoom().getASeat());
                 ticketManager.addTicket(ChildTicket);
             }
 
             for (int i = 0; i < getAdultTickets(); i++) {
-                Ticket adultTicket = new AdultTicket(presentation, presentation.getRoom().getASeat());
+                Ticket adultTicket = new AdultTicket(new User(1), presentation, presentation.getRoom().getASeat());
                 ticketManager.addTicket(adultTicket);
             }
 
-            intent.putExtra("Manager", ticketManager);
             startActivity(intent);
+            finish();
         } else if (getTotalTickets() == 0){
             result.setText("Kies minimaal 1 kaartje");
         } else if (getTotalTickets() > presentation.getRoom().getSeats().size()){

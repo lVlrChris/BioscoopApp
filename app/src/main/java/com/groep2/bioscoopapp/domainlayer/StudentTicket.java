@@ -9,8 +9,8 @@ import java.io.Serializable;
 public class StudentTicket extends Ticket implements Serializable {
 
     private int price;
-    public StudentTicket(Presentation presentation, Seat seat){
-        super(presentation, seat);
+    public StudentTicket(User user, Presentation presentation, Seat seat){
+        super(user, presentation, seat);
         this.price = 8;
     }
 

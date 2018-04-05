@@ -10,8 +10,8 @@ public class ChildTicket extends Ticket implements Serializable {
 
     private int price;
 
-    public ChildTicket(Presentation presentation, Seat seat) {
-        super(presentation, seat);
+    public ChildTicket(User user, Presentation presentation, Seat seat) {
+        super(user, presentation, seat);
         this.price = 5;
     }
 

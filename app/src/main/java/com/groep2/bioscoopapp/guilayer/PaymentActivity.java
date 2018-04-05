@@ -15,24 +15,24 @@ public class PaymentActivity extends AppCompatActivity {
 
     ListView tickets;
     TicketAdapter adapter;
+    TicketManager ticketManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
-        //Lege intent.
-        Intent intent;
-        //Lege movie.
-        TicketManager manager;
-        //Maakt een intent aan van de meegegeven intent.
-        intent = getIntent();
-        //Haalt de gegevens op uit de meegegeven movie.
-        manager = (TicketManager) intent.getSerializableExtra("Manager");
+        ticketManager= ticketManager.getInstance(getApplicationContext());
+        ticketManager.setPaymentActivity(this);
+
         //Zet de titel van de film
         tickets = findViewById(R.id.ap_ticketList);
-        adapter = new TicketAdapter(this, manager.getTickets());
+        adapter = new TicketAdapter(this, ticketManager.getTickets());
         tickets.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    public void dataChanged() {
         adapter.notifyDataSetChanged();
     }
 }

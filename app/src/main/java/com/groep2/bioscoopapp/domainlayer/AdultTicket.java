@@ -10,8 +10,8 @@ public class AdultTicket extends Ticket implements Serializable {
 
     private int price;
 
-    public AdultTicket(Presentation presentation, Seat seat) {
-        super(presentation, seat);
+    public AdultTicket(User user, Presentation presentation, Seat seat) {
+        super(user, presentation, seat);
         this.price = 10;
     }
 
