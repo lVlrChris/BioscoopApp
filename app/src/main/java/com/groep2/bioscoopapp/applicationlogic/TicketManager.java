@@ -4,26 +4,26 @@ import android.content.Context;
 
 import com.groep2.bioscoopapp.dataaccess.TicketSQLDAO;
 import com.groep2.bioscoopapp.domainlayer.Ticket;
+import com.groep2.bioscoopapp.guilayer.PaymentActivity;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Kevin van Loon on 31-3-2018.
  */
 
-public class TicketManager {
+public class TicketManager implements SqlListener {
 
     private static TicketManager instance;
 
     public ArrayList<Ticket> tickets;
-    private TicketSQLDAO ticketSQLDAO;
+    private Context context;
+    private PaymentActivity paymentActivity;
 
     //Constructor private to make singleton
     private TicketManager(Context context) {
         this.tickets = new ArrayList<>();
-        ticketSQLDAO = new TicketSQLDAO(context);
+        this.context = context;
     }
 
     //Singleton instance
@@ -31,18 +31,29 @@ public class TicketManager {
         if(instance == null) {
             instance = new TicketManager(context);
         }
-
         return instance;
     }
 
     public ArrayList<Ticket> getTickets() {
+        TicketSQLDAO ticketSQLDAO = new TicketSQLDAO(context, this);
+        ticketSQLDAO.selectAllTickets();
         return tickets;
     }
 
     public void addTicket(Ticket ticket) {
+        TicketSQLDAO ticketSQLDAO = new TicketSQLDAO(context, this);
         //inserts ticket in database and sets row id as id.
         ticket.setId(ticketSQLDAO.insertTicket(ticket));
         this.tickets.add(ticket);
+    }
+
+    public void onQueryExecute(ArrayList<Ticket> tickets) {
+        this.tickets.addAll(tickets);
+        paymentActivity.dataChanged();
+    }
+
+    public void setPaymentActivity(PaymentActivity paymentActivity) {
+        this.paymentActivity = paymentActivity;
     }
 }
 
