@@ -15,7 +15,7 @@ public final class SqlContract {
     public static final String TEXT_TYPE = " TEXT";
     public static final String INT_TYPE = " INTEGER";
     public static final String COMMA_SEP = ",";
-    public static final String FOREIGN_KEY =  "FOREIGN KEY (";
+    public static final String FOREIGN_KEY =  " FOREIGN KEY (";
     public static final String REFERENCES = ") REFERENCES ";
 
     //Inner classes to define table and column names
@@ -33,11 +33,11 @@ public final class SqlContract {
                 _ID + " INTEGER PRIMARY KEY," +
                 COLUMN_NAME_USER_ID + INT_TYPE + COMMA_SEP +
                 COLUMN_NAME_PRESENTATION_ID + INT_TYPE + COMMA_SEP +
-                COLUMN_NAME_SEAT_ID + INT_TYPE +
+                COLUMN_NAME_SEAT_ID + INT_TYPE + COMMA_SEP +
                 FOREIGN_KEY + COLUMN_NAME_USER_ID +
-                REFERENCES + User.TABLE_NAME + "(" + User._ID + ")" +
+                REFERENCES + User.TABLE_NAME + "(" + User._ID + ")" + COMMA_SEP +
                 FOREIGN_KEY + COLUMN_NAME_PRESENTATION_ID +
-                REFERENCES + Presentation.TABLE_NAME + "(" + Presentation._ID + ")" +
+                REFERENCES + Presentation.TABLE_NAME + "(" + Presentation._ID + ")" + COMMA_SEP +
                 FOREIGN_KEY + COLUMN_NAME_SEAT_ID +
                 REFERENCES + Seat.TABLE_NAME + "(" + Seat._ID + ")" +
                 ");";
