@@ -19,12 +19,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".guilayer.DetailActivity" />
-        <activity android:name=".guilayer.CinemaActivity" />
+        <activity android:name=".guilayer.DetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".guilayer.CinemaActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".guilayer.OrderActivity"
+            android:screenOrientation="portrait"
             android:noHistory="true" />
-        <activity android:name=".guilayer.PaymentActivity" />
-        <activity android:name=".guilayer.UserActivity"></activity>
+        <activity android:name=".guilayer.PaymentActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".guilayer.UserActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
