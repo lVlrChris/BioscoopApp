@@ -119,7 +119,6 @@ public class TicketSQLDAO extends AsyncTask<String, Void, Cursor> {
                 int presentationID = qCursor.getInt(2);
                 int seatID = qCursor.getInt(3);
 
-                //TODO: Make the actual tickets
                 Ticket newTicket = new StudentTicket(new User(userID),
                         presentationManager.getPresentation(presentationID),
                         new Seat(seatID));
