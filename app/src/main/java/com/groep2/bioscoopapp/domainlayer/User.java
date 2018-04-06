@@ -10,7 +10,6 @@ public class User {
 
     public User(int id){
         this.userId = id;
-
     }
 
     public int getUserId() {

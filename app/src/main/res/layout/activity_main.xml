@@ -19,19 +19,22 @@
 
     <Button
         android:id="@+id/am_infoCinemaButton"
-        android:layout_width="28dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="52dp"
+        android:layout_width="35dp"
+        android:layout_height="31dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
         android:background="@android:drawable/ic_menu_info_details"
         app:layout_constraintBottom_toBottomOf="@+id/am_headerTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/am_headerTitle"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/am_headerTitle"
+        app:layout_constraintVertical_bias="0.51" />
 
     <ImageView
         android:id="@+id/am_header"
         android:layout_width="0dp"
-        android:layout_height="46dp"
+        android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,9 +44,10 @@
     <ImageView
         android:id="@+id/am_topHeader"
         android:layout_width="0dp"
-        android:layout_height="45dp"
+        android:layout_height="66dp"
         android:src="@color/headerThemeBlack"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,11 +57,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:fontFamily="serif"
+        android:fontFamily="sans-serif"
         android:text="Bioscoop Breda"
+        android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:typeface="serif"
+        android:textSize="24sp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/am_topHeader"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,10 +72,15 @@
         android:id="@+id/am_userbutton"
         android:layout_width="28dp"
         android:layout_height="33dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:src="@android:drawable/sym_def_app_icon"
+        android:clickable="true"
+        android:onClick="imageClick"
+        android:src="@drawable/ic_account_circle_white_24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/am_MovieHeaderText"
         app:layout_constraintTop_toBottomOf="@+id/am_topHeader" />
 
     <TextView
@@ -84,6 +94,7 @@
         android:text="Films"
         android:textAllCaps="true"
         android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/am_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

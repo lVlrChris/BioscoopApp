@@ -18,8 +18,8 @@ public class MovieManager {
 
     private ArrayList<Movie> movies;
 
-    //Constructor protected to make singleton
-    protected MovieManager(MovieListener listener){
+    //Constructor private to make singleton
+    private MovieManager(MovieListener listener){
         movieApiDao = new MovieApiDao(listener);
         this.movies = new ArrayList<Movie>();
     }
@@ -54,4 +54,12 @@ public class MovieManager {
         this.movies.add(movie);
     }
 
+    public Movie getMovie(int movieID) {
+        for (Movie movie : movies) {
+            if (movie.getMovieID() == movieID) {
+                return movie;
+            }
+        }
+        return null;
+    }
 }

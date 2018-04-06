@@ -17,11 +17,14 @@ import com.groep2.bioscoopapp.domainlayer.Movie;
 import com.groep2.bioscoopapp.domainlayer.Presentation;
 import com.groep2.bioscoopapp.domainlayer.StudentTicket;
 import com.groep2.bioscoopapp.domainlayer.Ticket;
+import com.groep2.bioscoopapp.domainlayer.User;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+
+import static com.groep2.bioscoopapp.applicationlogic.TicketManager.getInstance;
 
 public class OrderActivity extends AppCompatActivity {
 
@@ -37,7 +40,7 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         result = (TextView) findViewById(R.id.ao_calculateResult);
-        ticketManager = new TicketManager();
+        ticketManager = getInstance(getApplicationContext());
         //Lege intent.
         Intent intent;
         //Lege presentation.
@@ -70,12 +73,12 @@ public class OrderActivity extends AppCompatActivity {
 
                 int totalTickets = getTotalTickets();
 
-                if (totalTickets < presentation.getRoom().getAmountOfFreeSeats()) {
+                if (totalTickets <= presentation.getRoom().getAmountOfFreeSeats()) {
                     int xSum = getAdultTickets() * ADULT_RPICE;
                     int zSum = getStudentTickets() * STUDENT_PRICE;
                     int ySum = getChildTickets() * CHILD_RPICE;
                     int totalPrice = zSum + xSum + ySum;
-                    result.setText(Integer.toString(totalPrice));
+                    result.setText("Totaal €" +Integer.toString(totalPrice));
                 } else{
                     result.setText("Er zijn nog " + presentation.getRoom().getAmountOfFreeSeats() + " plaatsen over");
                 }
@@ -86,13 +89,13 @@ public class OrderActivity extends AppCompatActivity {
 
     public void setTicketPrices(){
         TextView studentPrice = (TextView) findViewById(R.id.ao_studentPrice);
-        studentPrice.setText(Integer.toString(STUDENT_PRICE));
+        studentPrice.setText("€" +Integer.toString(STUDENT_PRICE));
 
         TextView adultPrice = (TextView) findViewById(R.id.ao_adultPRice);
-        adultPrice.setText(Integer.toString(ADULT_RPICE));
+        adultPrice.setText("€" +Integer.toString(ADULT_RPICE));
 
         TextView childPrice = (TextView) findViewById(R.id.ao_childPrice);
-        childPrice.setText(Integer.toString(CHILD_RPICE));
+        childPrice.setText("€" + Integer.toString(CHILD_RPICE));
     }
 
     public int getStudentTickets(){
@@ -130,28 +133,34 @@ public class OrderActivity extends AppCompatActivity {
 
     public void paymentButtonClicked(View view) {
 
-        ticketManager.clearTickets();
-        if (getTotalTickets() > 0) {
+        ticketManager.clearOrderTickets();
+
+        if (getTotalTickets() > 0 && getTotalTickets() <= presentation.getRoom().getSeats().size()) {
             Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
             for (int i = 0; i < getStudentTickets(); i++) {
-                Ticket studentTicket = new StudentTicket(presentation, presentation.getRoom().getASeat());
+                Ticket studentTicket = new StudentTicket(new User(1), presentation, presentation.getRoom().getASeat());
                 ticketManager.addTicket(studentTicket);
+                ticketManager.addOrderTicket(studentTicket);
             }
 
             for (int i = 0; i < getChildTickets(); i++) {
-                Ticket ChildTicket = new ChildTicket(presentation, presentation.getRoom().getASeat());
-                ticketManager.addTicket(ChildTicket);
+                Ticket childTicket = new ChildTicket(new User(1), presentation, presentation.getRoom().getASeat());
+                ticketManager.addTicket(childTicket);
+                ticketManager.addOrderTicket(childTicket);
             }
 
-            for (int i = 0; i < getChildTickets(); i++) {
-                Ticket adultTicket = new AdultTicket(presentation, presentation.getRoom().getASeat());
+            for (int i = 0; i < getAdultTickets(); i++) {
+                Ticket adultTicket = new AdultTicket(new User(1), presentation, presentation.getRoom().getASeat());
                 ticketManager.addTicket(adultTicket);
+                ticketManager.addOrderTicket(adultTicket);
             }
 
-            intent.putExtra("Manager", ticketManager);
             startActivity(intent);
-        } else {
+            finish();
+        } else if (getTotalTickets() == 0){
             result.setText("Kies minimaal 1 kaartje");
+        } else if (getTotalTickets() > presentation.getRoom().getSeats().size()){
+            result.setText("Er zijn nog " + presentation.getRoom().getSeats().size() + " stoelen beschikbaar");
         }
     }
 

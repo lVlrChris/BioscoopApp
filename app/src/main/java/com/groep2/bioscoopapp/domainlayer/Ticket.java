@@ -8,15 +8,37 @@ import java.io.Serializable;
 
 public abstract class Ticket implements Serializable {
 
+    private int id;
+    private User user;
     private Presentation presentation;
     private Seat seat;
     private int price;
     private String name;
 
-    public Ticket(Presentation presentation, Seat seat) {
+    public Ticket(User user, Presentation presentation, Seat seat) {
+        this.user = user;
         this.presentation = presentation;
         this.seat = seat;
     }
+
+    //get/set ID (from db row)
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    abstract int getPrice();
 
     public Presentation getPresentation() {
         return presentation;

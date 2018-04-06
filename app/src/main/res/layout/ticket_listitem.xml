@@ -11,9 +11,10 @@
         android:layout_width="0dp"
         android:layout_height="121dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/colorPrimary" />
+        app:srcCompat="@android:color/darker_gray" />
 
     <ImageView
         android:id="@+id/tl_qrCode"
@@ -43,6 +44,7 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/tl_backgroundColor"
         app:layout_constraintEnd_toEndOf="@+id/tl_backgroundColor"
+        app:layout_constraintHorizontal_bias="0.658"
         app:layout_constraintStart_toEndOf="@+id/tl_qrCode"
         app:layout_constraintTop_toTopOf="@+id/tl_backgroundColor"
         app:layout_constraintVertical_bias="0.0" />
@@ -57,6 +59,7 @@
         android:text="TextView"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.658"
         app:layout_constraintStart_toEndOf="@+id/tl_qrCode"
         app:layout_constraintTop_toBottomOf="@+id/tl_movie" />
 
@@ -83,6 +86,7 @@
         android:text="TextView"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.658"
         app:layout_constraintStart_toEndOf="@+id/tl_qrCode"
         app:layout_constraintTop_toBottomOf="@+id/tl_time" />
 
@@ -96,7 +100,21 @@
         android:text="TextView"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.658"
         app:layout_constraintStart_toEndOf="@+id/tl_qrCode"
         app:layout_constraintTop_toBottomOf="@+id/tl_room" />
+
+    <TextView
+        android:id="@+id/tl_ticketType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/tl_time"
+        app:layout_constraintStart_toEndOf="@+id/tl_qrCode"
+        app:layout_constraintTop_toBottomOf="@+id/tl_price" />
 
 </android.support.constraint.ConstraintLayout>

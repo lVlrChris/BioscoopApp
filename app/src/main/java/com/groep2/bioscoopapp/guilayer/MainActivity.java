@@ -60,10 +60,17 @@ public class MainActivity extends AppCompatActivity implements MovieListener {
         });
     }
 
+
+
     //callback
     @Override
     public void onMovieExecute(Movie movie) {
         movieManager.addMovie(movie);
         adapter.notifyDataSetChanged();
+    }
+
+    public void imageClick(View view) {
+        Intent intent = new Intent(getApplicationContext(),UserActivity.class);
+        startActivity(intent);
     }
 }

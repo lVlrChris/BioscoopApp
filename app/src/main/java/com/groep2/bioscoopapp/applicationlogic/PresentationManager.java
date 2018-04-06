@@ -46,10 +46,22 @@ public class PresentationManager {
         return presentations;
     }
 
+    public Presentation getPresentation(int presentationID) {
+        for (Presentation pres : presentations) {
+            if (pres.getId() == presentationID) {
+                return pres;
+            }
+        }
+        return null;
+    }
+
     public void fillFakeData() {
+        int idIterator = 0;
         for (Movie movie : movieManager.getMovies()) {
-            presentations.add(new Presentation(movie, new Room(1), "17:00"));
-            presentations.add(new Presentation(movie, new Room(1), "21:00"));
+            presentations.add(new Presentation(idIterator, movie, new Room(1), "17:00"));
+            idIterator++;
+            presentations.add(new Presentation(idIterator, movie, new Room(1), "21:00"));
+            idIterator++;
         }
     }
 }
