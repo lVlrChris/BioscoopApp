@@ -55,7 +55,7 @@ public class TicketManager implements SqlListener {
         TicketSQLDAO ticketSQLDAO = new TicketSQLDAO(context, this);
         //inserts ticket in database and sets row id as id.
         ticket.setId(ticketSQLDAO.insertTicket(ticket));
-        this.tickets.add(ticket);
+        //this.tickets.add(ticket);
     }
 
     public void addOrderTicket(Ticket ticket) {
